@@ -1,6 +1,11 @@
 # ProductDevExercises
 > Welcome to the The Block Product developer exercise! This exercise is here to get you acquainted with a small sample of what we do and for us to get acquainted with your skills. It should take no more than two hours of your time.
 
+# Installation Instructions
+After cloning the repo, cd into `react-version` and run `npm install`. This will install all the necessary dependencies.
+
+After doing that, running `npm start` will run the app in your default browser in the url `localhost:3000`
+
 
 ## Some guidance
 
