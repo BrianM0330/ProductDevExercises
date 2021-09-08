@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import { todoState } from './ITodoState'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { Button } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 
 type formInput = {
 	taskInput: string
@@ -34,14 +34,14 @@ export const NewTask: React.FunctionComponent<INewTaskprops> = (props) => {
 	return (
 		<div>
 			<h4> Create a new task here!</h4>
-			<form onSubmit={handleSubmit(onSubmit)}>
+			<Form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
 				<input
 					type="text"
 					{...register('taskInput', { required: true })}
 				/>
 				<h2>{errors.taskInput && 'Cannot be empty!'} </h2>
 				<Button type="submit"> Submit Task </Button>
-			</form>
+			</Form>
 		</div>
 	)
 }
