@@ -15,6 +15,7 @@ import '../App.css'
 export const Dashboard: React.FunctionComponent = () => {
 	const [calculator, setCalculator] = useState<calcState>({
 		display: 0,
+		lastInput: 0,
 		currentOps: [],
 	})
 
