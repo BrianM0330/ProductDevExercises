@@ -1,9 +1,20 @@
-import * as React from "react";
+import { Dispatch, SetStateAction } from 'react'
+import { todoState } from './ITodoState'
 
-interface ITodoProps {}
+import { NewTask } from './new-task'
+import { TaskList } from './task-list'
 
-const Todo: React.FunctionComponent<ITodoProps> = (props) => {
-  return <div> yo </div>;
-};
+interface ITodoProps {
+	state: todoState
+	setState: Dispatch<SetStateAction<todoState>>
+}
 
-export default Todo;
+export const ToDo: React.FC<ITodoProps> = (props) => {
+	return (
+		<div>
+			<h2> Current Tasks </h2>
+			<NewTask state={props.state} setState={props.setState} />
+			<TaskList state={props.state} setState={props.setState} />
+		</div>
+	)
+}

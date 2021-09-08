@@ -1,7 +1,17 @@
-import * as React from 'react'
+import { Dispatch, useEffect, SetStateAction } from 'react'
+import { todoState } from './ITodoState'
 
-interface ITaskList {}
+interface ITaskList {
+	state: todoState
+	setState: Dispatch<SetStateAction<todoState>>
+}
 
-export const TaskList: React.FunctionComponent<ITaskList> = (props) => {
-	return <div> calculator </div>
+export const TaskList: React.FC<ITaskList> = (props) => {
+	return (
+		<div>
+			{props.state.allTasks.map((task, i) => (
+				<p key={i}>{task}</p>
+			))}
+		</div>
+	)
 }
