@@ -1,10 +1,9 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { Dashboard } from "./components/dashboard";
+import './App.css'
+import { Dashboard } from './components/dashboard'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
-  return <Dashboard />;
+	return <Dashboard />
 }
 
-export default App;
+export default App

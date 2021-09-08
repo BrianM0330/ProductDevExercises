@@ -12,7 +12,7 @@ interface ITodoProps {
 export const ToDo: React.FC<ITodoProps> = (props) => {
 	return (
 		<div>
-			<h2> Current Tasks </h2>
+			<h3> Current Tasks </h3>
 			<NewTask state={props.state} setState={props.setState} />
 			<TaskList state={props.state} setState={props.setState} />
 		</div>

@@ -1,5 +1,5 @@
-import * as React from 'react'
 import { Dispatch, SetStateAction } from 'react'
+import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { calcState } from './ICalcState'
 
@@ -46,88 +46,147 @@ export const Display: React.FunctionComponent<DisplayProps> = (props) => {
 		const mutated = {
 			...props.state,
 			display: eval(props.state.currentOps.join('') + data.input),
-			operationStack: [],
+			currentOps: [],
 		}
 		props.setState(mutated)
+		console.log(props.state)
 		reset()
 	}
 
 	return (
 		<div>
-			<form onSubmit={handleSubmit(onSubmit)}>
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				{props.state.display !== 0 ? props.state.display : <div />}
 				<h4>
 					{' '}
 					{props.state.currentOps[0]} {props.state.currentOps[1]}
 					{watch('input')}
 				</h4>
-				<div>
-					<input
-						type="string"
-						defaultValue=" "
-						{...register('input')}
-					/>
-					<button type="submit">Calculate</button>
-				</div>
-				<div>
-					<button type="button" onClick={() => number_input('1')}>
-						1
-					</button>
+				<input type="string" defaultValue=" " {...register('input')} />
+				<Button
+					style={{ padding: 8, marginLeft: 16, height: 'auto' }}
+					type="submit"
+				>
+					Calculate
+				</Button>
 
-					<button type="button" onClick={() => number_input('2')}>
-						2
-					</button>
+				<Button style={{ margin: 8 }} onClick={() => clear()}>
+					CE
+				</Button>
+				<Container>
+					<Col>
+						<Button
+							style={{ margin: 8 }}
+							type="button"
+							onClick={() => number_input('1')}
+						>
+							1
+						</Button>
 
-					<button type="button" onClick={() => number_input('3')}>
-						3
-					</button>
+						<Button
+							style={{ margin: 8 }}
+							type="button"
+							onClick={() => number_input('2')}
+						>
+							2
+						</Button>
 
-					<button type="button" onClick={() => number_input('4')}>
-						4
-					</button>
+						<Button
+							style={{ margin: 8 }}
+							type="button"
+							onClick={() => number_input('3')}
+						>
+							3
+						</Button>
+					</Col>
 
-					<button type="button" onClick={() => number_input('5')}>
-						5
-					</button>
+					<Col>
+						<Button
+							style={{ margin: 8 }}
+							type="button"
+							onClick={() => number_input('4')}
+						>
+							4
+						</Button>
 
-					<button type="button" onClick={() => number_input('6')}>
-						6
-					</button>
+						<Button
+							style={{ margin: 8 }}
+							type="button"
+							onClick={() => number_input('5')}
+						>
+							5
+						</Button>
 
-					<button type="button" onClick={() => number_input('7')}>
-						7
-					</button>
+						<Button
+							style={{ margin: 8 }}
+							type="button"
+							onClick={() => number_input('6')}
+						>
+							6
+						</Button>
+					</Col>
 
-					<button type="button" onClick={() => number_input('8')}>
-						8
-					</button>
+					<Col>
+						<Button
+							style={{ margin: 8 }}
+							type="button"
+							onClick={() => number_input('7')}
+						>
+							7
+						</Button>
 
-					<button type="button" onClick={() => number_input('9')}>
-						9
-					</button>
-				</div>
-				<div>
-					<button type="button" onClick={() => operator('+')}>
-						+
-					</button>
+						<Button
+							style={{ margin: 8 }}
+							type="button"
+							onClick={() => number_input('8')}
+						>
+							8
+						</Button>
 
-					<button type="button" onClick={() => operator('-')}>
-						-
-					</button>
+						<Button
+							style={{ margin: 8 }}
+							type="button"
+							onClick={() => number_input('9')}
+						>
+							9
+						</Button>
+					</Col>
 
-					<button type="button" onClick={() => operator('*')}>
-						*
-					</button>
+					<Col>
+						<Button
+							style={{ margin: 8 }}
+							type="button"
+							onClick={() => operator('+')}
+						>
+							+
+						</Button>
 
-					<button type="button" onClick={() => operator('/')}>
-						/
-					</button>
+						<Button
+							style={{ margin: 8 }}
+							type="button"
+							onClick={() => operator('-')}
+						>
+							-
+						</Button>
 
-					<button type="button" onClick={() => clear()}>
-						CE
-					</button>
-				</div>
-			</form>
+						<Button
+							style={{ margin: 8 }}
+							type="button"
+							onClick={() => operator('*')}
+						>
+							*
+						</Button>
+
+						<Button
+							style={{ margin: 8 }}
+							type="button"
+							onClick={() => operator('/')}
+						>
+							/
+						</Button>
+					</Col>
+				</Container>
+			</Form>
 		</div>
 	)
 }

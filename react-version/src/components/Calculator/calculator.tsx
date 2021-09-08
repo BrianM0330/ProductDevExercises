@@ -8,15 +8,9 @@ interface CalculatorProps {
 }
 
 export const Calculator: React.FunctionComponent<CalculatorProps> = (props) => {
-	function update() {
-		const test = { ...props.state, display: props.state.display + 1 }
-		console.log(test.currentOps)
-		props.setState(test)
-	}
-
 	return (
 		<div>
-			<h1> Calculator </h1>
+			<h4> Calculator </h4>
 			<Display state={props.state} setState={props.setState} />
 		</div>
 	)

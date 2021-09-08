@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Dispatch, SetStateAction } from 'react'
+import { Container, Row, Button, Col } from 'react-bootstrap'
 import { counterState } from './ICounterState'
 
 interface CounterProps {
@@ -25,12 +26,23 @@ export const Counter: React.FunctionComponent<CounterProps> = (props) => {
 		props.setState(mutated_state)
 	}
 	return (
-		<div>
-			<h2>{props.state.count}</h2>
-			<h3>{props.state.totalOperations}</h3>
-			<button onClick={() => increment('+')}> + </button>
-			<button onClick={() => increment('r')}> r </button>
-			<button onClick={() => increment('-')}> - </button>
-		</div>
+		<Container>
+			<Row>
+				<Col>
+					<h2>{props.state.count}</h2>
+					<h3>{props.state.totalOperations}</h3>
+				</Col>
+
+				<Button style={{ margin: 8 }} onClick={() => increment('+')}>
+					+
+				</Button>
+				<Button style={{ margin: 8 }} onClick={() => increment('r')}>
+					Reset
+				</Button>
+				<Button style={{ margin: 8 }} onClick={() => increment('-')}>
+					-
+				</Button>
+			</Row>
+		</Container>
 	)
 }

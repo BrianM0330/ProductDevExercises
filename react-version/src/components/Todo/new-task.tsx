@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import { todoState } from './ITodoState'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { Button } from 'react-bootstrap'
 
 type formInput = {
 	taskInput: string
@@ -19,7 +20,8 @@ export const NewTask: React.FunctionComponent<INewTaskprops> = (props) => {
 		reset,
 	} = useForm<formInput>()
 
-	const onSubmit: SubmitHandler<formInput> = (data, event) => {
+	//Kind of bad. Pushing to allTasks returns a number, so I'm storing it in totalTasks.
+	const onSubmit: SubmitHandler<formInput> = (data) => {
 		const mutated = {
 			...props.state,
 			totalTasks: props.state.allTasks.push(data.taskInput),
@@ -31,14 +33,14 @@ export const NewTask: React.FunctionComponent<INewTaskprops> = (props) => {
 
 	return (
 		<div>
-			<h3> Create a new task here!</h3>
+			<h4> Create a new task here!</h4>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<input
 					type="text"
 					{...register('taskInput', { required: true })}
 				/>
 				<h2>{errors.taskInput && 'Cannot be empty!'} </h2>
-				<input type="submit" />
+				<Button type="submit"> Submit Task </Button>
 			</form>
 		</div>
 	)
