@@ -9,19 +9,20 @@ interface CounterProps {
 
 export const Counter: React.FunctionComponent<CounterProps> = (props) => {
 	function increment(operationType: string) {
-		const test = {
+		const mutated_state = {
 			...props.state,
 			count: props.state.count,
 			totalOperations: props.state.totalOperations + 1,
 		}
 
-		if (operationType === '+') test.count++
+		if (operationType === '+') mutated_state.count++
 		else if (operationType === '-')
-			test.count > 0 ? test.count-- : (test.count = 0)
-		else test.count = 0
+			mutated_state.count > 0
+				? mutated_state.count--
+				: (mutated_state.count = 0)
+		else mutated_state.count = 0
 
-		console.log(test)
-		props.setState(test)
+		props.setState(mutated_state)
 	}
 	return (
 		<div>
